@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>Vue中的动画封装</script>
+  <title>Document</title>
+  <style>
+    .v-enter,.v-leave-to{
+      opacity: 0;
+    }
+    .v-enter-actve, .v-leave-active{
+      transition: opacity 1s;
+    }
+  </style>
+</head>
+<body>
+  <div id="root">
+    <fade :show = "show">
+      <div v-if="show" >Hello World</div>
+    </fade>
+    <button @click="handleClick">改变</button>
+  </div>
+  <script>
+    Vue.component('fade',{
+      props:['show'],
+      template:`
+        <transition>
+          <slot v-if="show"></slot>
+          </transition>
+      `
+    })
+    var vm = new Vue({
+      el:"#root",
+      data:{
+        show:true
+      },
+      methods: {
+        handleClick:function(){
+          this.show = !this.show
+        }
+      },
+    })
+  </script>
+</body>
+</html>
