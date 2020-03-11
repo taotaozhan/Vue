@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="./lib/vue.js"></script>
+  <title>vue使用插槽</title>
+</head>
+<body>
+  <div id="root">
+    <body-content>
+      <!-- 具名插槽 -->
+      <!-- <div class="header" slot="header">header</div> -->
+      <div class="footer" slot="footer">footer</div>
+    </body-content>
+  </div>
+  <script>
+    Vue.component('body-content',{
+      template:`<div>
+                      <slot name="header">
+                         <h1>deafult header</h1>
+                      </slot>
+                      <div class='content'>content</div>
+                      <slot name="footer"></slot>
+               </div>`
+    })
+    var vm = new Vue({
+      el:"#root"
+    })
+  </script>
+</body>
+</html>

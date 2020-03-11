@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="./lib/vue.js"></script>
+  <title>组件中使用的细节</title>
+</head>
+
+<body>
+  <div id="root">
+    <counter ref="one" @change="handleChange"></counter>
+    <counter ref="two" @change="handleChange"></counter>
+    <div>{{total}}</div>
+  </div>
+  <script>
+    Vue.component('counter', {
+      template:'<div @click="handleCLick">{{number}}</div>',
+      data: function () {
+        return {
+          number:0
+        }
+      },
+      methods: {
+        handleCLick:function(){
+          this.number++
+          //子组件和父组件之间的传值使用this.$emit
+          this.$emit('change')
+        }
+      },
+    })
+    var vm = new Vue({
+      el: '#root',
+      data:{
+        total:0,
+      },
+      methods:{
+        handleChange:function(){
+          alert(this.total=this.$refs.one.number+this.$refs.two.number)
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

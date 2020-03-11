@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="./lib/vue.js"></script>
+  <title>非Props特性</title>
+</head>
+
+<body>
+  <div id="root">
+    <child content="hell"></child>
+  </div>
+  <script>
+    Vue.component('child', {
+      // props:{
+
+      // }
+      template:'<div>hello</div>'
+    })
+    var vm = new Vue({
+      el:'#root'
+    })
+  </script>
+</body>
+</html>

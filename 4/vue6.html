@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="./lib/vue.js"></script>
+  <title>在Vue中使用插槽</title>
+</head>
+
+<body>
+  <div id="root">
+    <child>
+      <p>Dell</p>
+    </child>
+  </div>
+  <script>
+    Vue.component('child', {
+      template: `<div>
+      <p>Hello</p>
+      <slot>默认内容</slot>
+                 </div>`
+    })
+    var vm = new Vue({
+      el: '#root',
+    })
+  </script>
+</body>
+
+</html>

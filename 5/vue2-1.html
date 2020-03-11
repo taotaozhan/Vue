@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="./lib/vue.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+  <title>Vue 中使用animate.css库</title>
+</head>
+<body>
+  <div id="root">
+    <transition name="fade"
+       enter-active-class="animated swing"
+       leave-active-class="animated shake"
+    >
+      <div v-if="show">Hello world</div>
+    </transition>
+    <button @click = "handleClick">切换</button>
+  </div>
+  <script>
+    var vm = new Vue({
+      el:'#root',
+      data: {
+        show:true
+      },
+      methods: {
+        handleClick:function(){
+          this.show = !this.show
+        }
+      },
+    })
+  </script>
+</body>
+</html>

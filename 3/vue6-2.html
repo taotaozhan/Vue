@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="./lib/vue.js"></script>
+  <title>style 对象和数组绑定</title>
+</head>
+<body>
+  <div id="app">
+    <!-- style的对象绑定
+    <div :style="styleObj" @click = "handleBtn">
+      Hello World
+    </div> -->
+
+    <!-- style的数组绑定 -->
+    <div :style="[styleObj,{fontSize:'20px'}]" @click = "handleBtn">
+      Hello World
+    </div>
+  </div>
+  <script>
+    var vm = new Vue({
+      el:"#app",
+      data:{
+        styleObj:{
+          color: "black"
+        }
+      },
+      methods: {
+        handleBtn:function(){
+          this.styleObj.color = this.styleObj.color === "black"
+          ?"red":"black"
+        }
+      },
+    })
+  </script>
+</body>
+</html>

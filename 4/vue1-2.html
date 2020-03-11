@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="./lib/vue.js"></script>
+  <title>组件中使用的细节</title>
+</head>
+<body>
+  <div id="root">
+    <div ref="hello" @click="handleClick">
+      Hello World
+    </div>
+  </div>
+  <script>
+    var vm = new Vue({
+      el:"#root",
+      methods: {
+        handleClick: function(){
+        console.log(this.$refs.hello.innerHTML)
+        alert(this.$refs.hello.innerHTML)
+        }
+      },
+    })
+  </script>
+</body>
+</html>

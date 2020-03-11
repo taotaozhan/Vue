@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="./lib/vue.js"></script>
+  <title>组件使用的细节点</title>
+</head>
+<body>
+  <div id="app">
+    <table>
+      <tbody>
+        <tr is="row"></tr>
+        <tr is="row"></tr>
+        <tr is="row"></tr>
+      </tbody>
+    </table>
+  </div>
+  <script>
+    Vue.component('row',{
+      template:'<tr><td>this is a row</td></tr>'
+    })
+    var vm = new Vue({
+      el:"#app",
+      data:{
+
+      }
+    })
+  </script>
+</body>
+</html>

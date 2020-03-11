@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="./lib/vue.js"></script>
+  <title>Vue 中的列表渲染</title>
+</head>
+
+<body>
+  <div id="app">
+    <template v-for="(item, index) in list" :key="item.id">
+      <div >
+        {{item.text}}---{{index}}
+      </div>
+      <span>
+        {{item.text}}
+      </span>
+    </template>
+  </div>
+  <script>
+    //push pop
+    // shift 数组第一项删掉
+    // unshift 往数组添加一项内容
+    // splice 数组数据的一些截取
+    // sort  数组的排序
+    //reverse
+
+    var vm = new Vue({
+      el: "#app",
+      data: {
+        list: [{
+          id: "1",
+          text: "nihao"
+        }, {
+          id: "2",
+          text: "hao"
+        }, {
+          id: "3",
+          text: "hao"
+        }]
+
+        // list:[
+        //   "my",
+        //   "name",
+        //   "is",
+        //   "zhangtao"
+        // ]
+      }
+    })
+  </script>
+</body>
+
+</html>
