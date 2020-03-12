@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script>Vue中的动画封装</script>
-  <title>Document</title>
-  <style>
+  <script src="./lib/vue.js"></script>
+  <title>Vue中的动画封装</title>
+  <!-- <style>
     .v-enter,.v-leave-to{
       opacity: 0;
     }
     .v-enter-actve, .v-leave-active{
       transition: opacity 1s;
     }
-  </style>
+  </style> -->
 </head>
 <body>
   <div id="root">
@@ -25,10 +25,22 @@
     Vue.component('fade',{
       props:['show'],
       template:`
-        <transition>
+        <transition @before-enter="handleBrforeEnter"
+        @enter = "handlenter">
           <slot v-if="show"></slot>
           </transition>
-      `
+      `,
+      methods:{
+        handleBrforeEnter:function(el){
+          el.style.color = 'red'
+        },
+        handlenter:function(el,done){
+          setTimeout(() => {
+            el.style.color = 'green'
+            done()
+          }, 2000);
+        }
+      }
     })
     var vm = new Vue({
       el:"#root",
